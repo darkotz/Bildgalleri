@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bildgalleri.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label 
+                Text="Image Gallery"
+                FontSize="26"
+                Style="{StaticResource Headline}"
+                />
+            <Image
+                x:Name="MainImage"
+                HeightRequest="240"
+                WidthRequest="240"
+                Aspect="AspectFit"
+                />
+            <Label
+                x:Name="ImageText"
+                Style="{StaticResource Headline}"
+                />
+            <!-- <ImageButton x:Name="FavoriteButton"
+                 WidthRequest="40"
+                 HeightRequest="40"
+                 BackgroundColor="Transparent"
+                 Clicked="OnFavoriteClicked">
+                <ImageButton.Source>    
+
+                    <FontImageSource Glyph="&#xE87E;"
+                     FontFamily="MaterialIcons"
+                     Size="32"
+                     Color="Gray"/>
+                </ImageButton.Source>
+            </ImageButton> -->
+
+            <Button
+    Text="Ny bild" 
+    Clicked="ImageOnClicked"
+    HorizontalOptions="Center" />
+            <Button
+Text="❤️" 
+HorizontalOptions="Center" />
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
