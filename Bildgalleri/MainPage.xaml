@@ -10,40 +10,53 @@
 
             <Label 
                 Text="Image Gallery"
+                FontFamily="BBHSansHegarty"
                 FontSize="26"
                 Style="{StaticResource Headline}"
                 />
-            <Image
-                x:Name="MainImage"
-                HeightRequest="240"
-                WidthRequest="240"
-                Aspect="AspectFit"
-                />
+
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="20">
+
+
+                <Button
+                    Text="👎"
+                    x:Name="DislikeButton"
+                    Clicked="DislikeClicked"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    >
+                    
+                </Button>
+                <Image
+    x:Name="MainImage"
+    HeightRequest="240"
+    WidthRequest="240"
+    Aspect="AspectFit"
+    />
+                <Button
+                    Text="👍"
+                    x:Name="LikeButton"
+                    Clicked="LikeClicked"
+                    WidthRequest="60"
+                    HeightRequest="60">
+                    
+                </Button>
+
+            </HorizontalStackLayout>
+            
             <Label
                 x:Name="ImageText"
                 Style="{StaticResource Headline}"
                 />
-            <!-- <ImageButton x:Name="FavoriteButton"
-                 WidthRequest="40"
-                 HeightRequest="40"
-                 BackgroundColor="Transparent"
-                 Clicked="OnFavoriteClicked">
-                <ImageButton.Source>    
-
-                    <FontImageSource Glyph="&#xE87E;"
-                     FontFamily="MaterialIcons"
-                     Size="32"
-                     Color="Gray"/>
-                </ImageButton.Source>
-            </ImageButton> -->
 
             <Button
     Text="Ny bild" 
     Clicked="ImageOnClicked"
     HorizontalOptions="Center" />
-            <Button
-Text="❤️" 
-HorizontalOptions="Center" />
+            
 
 
         </VerticalStackLayout>

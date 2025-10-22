@@ -11,6 +11,8 @@ public partial class MainPage : ContentPage
         public string Image { get; set; }
 
         public string Beskrivning { get; set; }
+        public bool IsLiked { get; set; }
+        public bool IsDisliked { get; set; }
     }
 
 
@@ -45,12 +47,64 @@ public partial class MainPage : ContentPage
 
         MainImage.Source = selectedImage.Image;
         ImageText.Text = selectedImage.Beskrivning;
+        UpdateButtons();
 
     }
 
     private void ImageOnClicked(object? sender, EventArgs e)
     {
         ShowImageAndText();
+    }
+
+    private void LikeClicked(object sender, EventArgs e)
+    {
+        var fileImageSource = MainImage.Source as FileImageSource;
+        var current = Images.FirstOrDefault(i => i.Image == fileImageSource?.File);
+        
+
+       
+        current.IsLiked = !current.IsLiked;
+        if (current.IsLiked) current.IsDisliked = false;
+
+        UpdateButtons();
+    }
+
+    private void DislikeClicked(object sender, EventArgs e)
+    {
+        var fileImageSource = MainImage.Source as FileImageSource;
+        var current = Images.FirstOrDefault(i => i.Image == fileImageSource?.File);
+
+        current.IsDisliked = !current.IsDisliked;
+        if (current.IsDisliked) current.IsLiked = false;
+
+        UpdateButtons();
+    }
+
+    private void UpdateButtons()
+    {
+        if (MainImage.Source == null) return;
+
+        var fileImageSource = MainImage.Source as FileImageSource;
+        var current = Images.FirstOrDefault(i => i.Image == fileImageSource?.File);
+
+
+        if (current.IsLiked)
+        {
+            LikeButton.BackgroundColor = Colors.Green;
+        }
+        else
+        {
+            LikeButton.BackgroundColor = Colors.Transparent;
+        }
+
+        if (current.IsDisliked)
+        {
+            DislikeButton.BackgroundColor = Colors.Red;
+        }
+        else
+        {
+            DislikeButton.BackgroundColor = Colors.Transparent;
+        }
     }
 
 
